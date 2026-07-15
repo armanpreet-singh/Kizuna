@@ -3,47 +3,47 @@ import SectionHeading from "../ui/SectionHeading";
 import TestimonialCard from "./TestimonialCard";
 
 const Testimonials = () => {
-  // Realistic placeholder data for social proof
   const testimonials = [
     {
       name: "Sarah Chen",
       role: "Chief Technology Officer",
-      company: "TechFlow",
+      company: "Axiom",
       initials: "SC",
+      avatarTheme: "indigo",
       review:
-        "Kizuna completely transformed our remote engineering culture. The latency is virtually zero, and the interface is so unobtrusive that it actually helps us focus instead of distracting us.",
+        "We migrated from Slack because the interface had become too heavy. Kizuna feels like it was built by engineers, for engineers. The command palette and sub-100ms latency aren't just features; they fundamentally change how quickly we resolve production issues.",
     },
     {
       name: "Marcus Johnson",
       role: "Lead Product Designer",
-      company: "Craft Studio",
+      company: "Synthetica",
       initials: "MJ",
+      avatarTheme: "pink",
       review:
-        "As a designer, I appreciate tools that respect visual hierarchy. Kizuna is beautiful, minimal, and handles file sharing flawlessly. It's the first chat app my team actually enjoys using.",
+        "Most chat apps are visual chaos. Kizuna respects typography, spacing, and hierarchy. It's the only tool where I can review Figma files natively in thread without the UI fighting for my attention. It respects the design process.",
     },
     {
       name: "Elena Rodriguez",
       role: "Engineering Manager",
-      company: "DataSync",
+      company: "Prisma Labs",
       initials: "ER",
+      avatarTheme: "cyan",
       review:
-        "We migrated from Slack to Kizuna for the speed and security. The permission system is incredibly granular, and the universal search saves us hours of digging through thread history every week.",
+        "The contextual notification routing is a game-changer. My team is no longer interrupted by off-topic channel noise. They focus on deep work, and Kizuna only alerts them when their specific expertise is actually required.",
     },
   ];
 
   return (
     <section className="py-20 sm:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <SectionHeading
           eyebrow="Testimonials"
-          title="Loved by high-performance teams"
-          subtitle="Don't just take our word for it. Here's what early adopters have to say about building their culture on Kizuna."
+          title="Trusted by teams who ship"
+          subtitle="Don't take our word for it. Here is what engineering and design leaders say about switching to Kizuna."
           align="center"
           className="mb-16"
         />
 
-        {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {testimonials.map((testimonial) => (
             <TestimonialCard
@@ -52,6 +52,7 @@ const Testimonials = () => {
               role={testimonial.role}
               company={testimonial.company}
               initials={testimonial.initials}
+              avatarTheme={testimonial.avatarTheme}
               review={testimonial.review}
             />
           ))}
