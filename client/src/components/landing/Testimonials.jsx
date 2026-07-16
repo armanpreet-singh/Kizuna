@@ -1,8 +1,8 @@
-
 import SectionHeading from "../ui/SectionHeading";
 import TestimonialCard from "./TestimonialCard";
 
 const Testimonials = () => {
+  // ... keep exact same testimonials array ...
   const testimonials = [
     {
       name: "Sarah Chen",
@@ -34,7 +34,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="py-20 sm:py-32 bg-white">
+    <section className="py-20 sm:py-32 bg-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Testimonials"
@@ -43,18 +43,9 @@ const Testimonials = () => {
           align="center"
           className="mb-16"
         />
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {testimonials.map((testimonial) => (
-            <TestimonialCard
-              key={testimonial.name}
-              name={testimonial.name}
-              role={testimonial.role}
-              company={testimonial.company}
-              initials={testimonial.initials}
-              avatarTheme={testimonial.avatarTheme}
-              review={testimonial.review}
-            />
+            <TestimonialCard key={testimonial.name} {...testimonial} />
           ))}
         </div>
       </div>
