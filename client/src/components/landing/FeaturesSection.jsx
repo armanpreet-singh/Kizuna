@@ -43,7 +43,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="features" className="py-20 sm:py-32 bg-slate-50">
+    <section id="features" className="py-20 sm:py-32 bg-slate-50 dark:bg-slate-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Capabilities"
@@ -52,7 +52,6 @@ const FeaturesSection = () => {
           align="center"
           className="mb-16"
         />
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {features.map((feature) => (
             <FeatureCard
