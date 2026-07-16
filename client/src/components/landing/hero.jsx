@@ -1,11 +1,10 @@
-
 import { ArrowRight, Play } from "lucide-react";
 import Button from "../ui/Button";
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-white pt-24 pb-16 sm:pt-32 sm:pb-24 lg:pt-40">
-      {/* Animated Decorative Background Element */}
+    <section className="relative overflow-hidden pt-24 pb-16 sm:pt-32 sm:pb-24 lg:pt-40">
+      {/* Animated Decorative Background Element - Adapts to theme */}
       <style>{`
         @keyframes gradient-shift {
           0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
@@ -16,7 +15,7 @@ const Hero = () => {
         }
       `}</style>
       <div
-        className="hero-glow absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-gradient-to-tr from-indigo-200 via-indigo-100 to-cyan-100 rounded-full blur-3xl pointer-events-none"
+        className="hero-glow absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-gradient-to-tr from-indigo-200 via-indigo-100 to-cyan-100 dark:from-indigo-900/30 dark:via-indigo-950/20 dark:to-cyan-900/20 rounded-full blur-3xl pointer-events-none"
         aria-hidden="true"
       />
 
@@ -24,23 +23,23 @@ const Hero = () => {
         {/* Text Content */}
         <div className="max-w-3xl mx-auto text-center">
           {/* Eyebrow */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-200 bg-indigo-50 mb-8">
-            <span className="w-1.5 h-1.5 rounded-full bg-indigo-600"></span>
-            <span className="text-xs font-medium text-indigo-700 tracking-wide">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-indigo-200 dark:border-indigo-500/30 bg-indigo-50 dark:bg-indigo-500/10 mb-8">
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-600 dark:bg-indigo-400"></span>
+            <span className="text-xs font-medium text-indigo-700 dark:text-indigo-300 tracking-wide">
               Now in Public Beta
             </span>
           </div>
 
           {/* Headline - Tighter tracking for premium feel */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tighter leading-[1.1]">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.1] text-slate-900 dark:text-white">
             Chat should accelerate{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-cyan-500 dark:from-indigo-400 dark:to-cyan-400">
               your work
             </span>
           </h1>
 
-          {/* Subheadline - Clearer value prop */}
-          <p className="mt-6 text-lg sm:text-xl text-slate-500 leading-relaxed max-w-2xl mx-auto">
+          {/* Subheadline */}
+          <p className="mt-6 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto text-slate-500 dark:text-slate-400">
             Kizuna brings your team's conversations, files, and tools into one fast,
             distraction-free workspace. Built for clarity, not clutter.
           </p>
@@ -51,16 +50,21 @@ const Hero = () => {
               Try Kizuna Free
               <ArrowRight className="w-4 h-4" />
             </Button>
-            <Button variant="ghost" size="lg" href="#preview">
+            <Button
+              variant="ghost"
+              size="lg"
+              href="#preview"
+              className="text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
+            >
               <Play className="w-4 h-4" />
               See how it works
             </Button>
           </div>
         </div>
 
-        {/* Realistic Product Illustration / Dashboard Preview */}
+        {/* Realistic Product Illustration */}
         <div className="relative mt-16 sm:mt-20 max-w-6xl mx-auto">
-          <div className="bg-slate-900 rounded-xl sm:rounded-2xl shadow-2xl shadow-slate-900/20 border border-slate-700/50 overflow-hidden">
+          <div className="bg-slate-900 rounded-xl sm:rounded-2xl shadow-2xl shadow-black/20 dark:shadow-black/50 border border-slate-700/50 overflow-hidden">
             {/* Faux Window Chrome */}
             <div className="flex items-center gap-2 px-4 py-3 bg-slate-800/80 border-b border-slate-700/50">
               <div className="flex gap-1.5">
@@ -76,7 +80,7 @@ const Hero = () => {
               <div className="w-12"></div>
             </div>
 
-            {/* Realistic App Skeleton Layout (Dark Mode Preview) */}
+            {/* Realistic App Layout (Dark Mode Preview) - Unchanged internally as it's already dark */}
             <div className="flex h-[350px] sm:h-[500px] bg-slate-900 text-slate-400">
               {/* Sidebar: Channels */}
               <div className="hidden sm:flex flex-col w-56 border-r border-slate-700/50 bg-slate-900 p-4 gap-1">
@@ -100,7 +104,6 @@ const Hero = () => {
 
               {/* Main Content: Chat */}
               <div className="flex-1 flex flex-col">
-                {/* Channel Header */}
                 <div className="h-14 border-b border-slate-700/50 px-6 flex items-center justify-between flex-shrink-0">
                   <div className="flex items-center gap-2 text-sm font-medium text-slate-200">
                     <span className="text-slate-500 text-lg">#</span> engineering
@@ -125,9 +128,7 @@ const Hero = () => {
                   </div>
                 </div>
 
-                {/* Messages Area */}
                 <div className="flex-1 p-6 flex flex-col gap-5 overflow-hidden">
-                  {/* Message 1 */}
                   <div className="flex gap-3">
                     <div className="w-8 h-8 rounded-full bg-indigo-500/20 border border-indigo-500/30 flex-shrink-0 flex items-center justify-center text-[10px] text-indigo-300 font-bold">
                       SC
@@ -144,7 +145,6 @@ const Hero = () => {
                     </div>
                   </div>
 
-                  {/* Message 2 (Self) */}
                   <div className="flex gap-3 self-end max-w-[70%]">
                     <div className="flex-1 flex flex-col items-end">
                       <div className="bg-indigo-600/20 border border-indigo-500/20 rounded-xl rounded-tr-sm px-4 py-2.5">
@@ -159,7 +159,6 @@ const Hero = () => {
                     </div>
                   </div>
 
-                  {/* Typing Indicator */}
                   <div className="flex gap-3 items-center">
                     <div className="w-8 h-8 rounded-full bg-slate-700/50 flex-shrink-0"></div>
                     <div className="bg-slate-800/80 border border-slate-700/50 rounded-xl px-4 py-3 flex items-center gap-1">
@@ -179,7 +178,6 @@ const Hero = () => {
                   </div>
                 </div>
 
-                {/* Input Area */}
                 <div className="p-4 border-t border-slate-700/50 bg-slate-900/50">
                   <div className="flex items-center gap-3 bg-slate-800/50 border border-slate-700/50 rounded-lg px-4 py-2.5">
                     <svg
@@ -213,7 +211,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Right Sidebar: Users (Hidden on small screens) */}
+              {/* Right Sidebar: Users */}
               <div className="hidden lg:flex flex-col w-56 border-l border-slate-700/50 bg-slate-900 p-4 gap-3">
                 <span className="text-[10px] font-semibold text-slate-500 uppercase tracking-wider mb-2">
                   Online — 4
@@ -251,9 +249,9 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Fade out bottom edge of mockup */}
+          {/* Fade out bottom edge - Adapts to theme */}
           <div
-            className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"
+            className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-slate-950 to-transparent pointer-events-none"
             aria-hidden="true"
           ></div>
         </div>
