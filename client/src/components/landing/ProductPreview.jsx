@@ -19,7 +19,7 @@ const ProductPreview = () => {
   ];
 
   return (
-    <section id="preview" className="py-spacing-section-m bg-surface-bg">
+    <section id="preview" className="pt-spacing-section-m pb-spacing-section-l bg-surface-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-2xl mx-auto text-center mb-12">

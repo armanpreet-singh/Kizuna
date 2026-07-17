@@ -42,7 +42,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="features" className="py-spacing-section-m bg-surface-bg">
+    <section id="features" className="py-spacing-section-l bg-surface-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="max-w-2xl mx-auto text-center mb-16">

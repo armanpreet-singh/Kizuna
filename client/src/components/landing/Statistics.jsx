@@ -29,7 +29,7 @@ const Statistics = () => {
 
   return (
     <section
-      className="py-spacing-section-s bg-surface-base border-y border-border-default"
+      className="py-spacing-section-xs bg-surface-base border-y border-border-default"
       aria-label="Platform statistics"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -2,7 +2,7 @@
 
   const CTASection = () => {
     return (
-      <section className="relative py-spacing-section-s bg-surface-bg border-t border-border-default overflow-hidden">
+      <section className="relative py-spacing-section-m bg-surface-bg border-t border-border-default overflow-hidden">
         {/* Atmospheric radial gradient to create visual gravity */}
         <div
           className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-brand-primary/5 rounded-full blur-3xl pointer-events-none"
@@ -17,8 +17,8 @@
 
           {/* Supporting Description */}
           <p className="mt-6 text-body-lg text-typography-secondary leading-relaxed max-w-2xl mx-auto">
-            Migrate your team in minutes. Kizuna seamlessly imports your history from Slack, Discord,
-            and Telegram—so you don't lose a single thread.
+            Migrate your team in minutes. Kizuna seamlessly imports your history from Slack,
+            Discord, and Telegram—so you don't lose a single thread.
           </p>
 
           {/* CTA Group - Upgraded shadow for final physical dominance */}
