@@ -1,0 +1,53 @@
+name: React CI
+
+# Run the workflow when code is pushed or a pull request is opened
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    # Name shown in the Actions tab
+    name: Build React App
+
+    # Use the latest Ubuntu runner
+    runs-on: ubuntu-latest
+
+    # Execute all run commands inside the client folder
+    defaults:
+      run:
+        working-directory: client
+
+    steps:
+      # Clone the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Install Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: client/package-lock.json
+
+      # Install project dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Run ESLint to check code quality
+      - name: Run ESLint
+        run: npm run lint
+
+      # Build the React application
+      - name: Build project
+        run: npm run build
+
+      # Run tests if a test script exists
+      - name: Run tests
+        run: npm test --if-present
