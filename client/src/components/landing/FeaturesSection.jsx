@@ -1,5 +1,4 @@
 import { Zap, GitBranch, HardDrive, ShieldCheck, Bell, Command } from "lucide-react";
-import SectionHeading from "../ui/SectionHeading";
 import FeatureCard from "./FeatureCard";
 
 const FeaturesSection = () => {
@@ -43,17 +42,24 @@ const FeaturesSection = () => {
   ];
 
   return (
-    // Removed muddy slate-900/50. Inherits the clean slate-900 base from App.jsx in dark mode.
-    <section id="features" className="py-20 sm:py-32 bg-slate-50 dark:bg-transparent">
+    <section id="features" className="py-spacing-section-m bg-surface-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <SectionHeading
-          eyebrow="Capabilities"
-          title="Tools that disappear so you can focus"
-          subtitle="We stripped away the bloat found in legacy chat apps. What remains is a refined set of tools designed to accelerate your team's workflow."
-          align="center"
-          className="mb-16"
-        />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* Section Header */}
+        <div className="max-w-2xl mx-auto text-center mb-16">
+          <p className="text-caption font-medium tracking-widest text-brand-primary uppercase mb-4">
+            Capabilities
+          </p>
+          <h2 className="text-display-l font-semibold text-typography-primary tracking-tight leading-tight">
+            Tools that disappear so you can focus
+          </h2>
+          <p className="mt-4 text-body-lg text-typography-secondary leading-relaxed">
+            We stripped away the bloat found in legacy chat apps. What remains is a refined set of
+            tools designed to accelerate your team's workflow.
+          </p>
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature) => (
             <FeatureCard
               key={feature.title}

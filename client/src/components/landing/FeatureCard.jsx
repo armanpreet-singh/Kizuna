@@ -1,18 +1,15 @@
-import Card from "../ui/Card";
-
-const FeatureCard = ({ icon: Icon, title, description, className = "" }) => {
+const FeatureCard = ({ icon: Icon, title, description }) => {
   return (
-    <Card padding="lg" className={`group h-full ${className}`}>
-      <div className="w-10 h-10 rounded-lg bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-4 transition-all duration-300 ease-out group-hover:bg-indigo-100 dark:group-hover:bg-indigo-500/20 group-hover:scale-110">
+    <article className="group h-full bg-surface-base border border-border-default rounded-xl shadow-sm p-6 transition-shadow duration-300 ease-in-out hover:shadow-md hover:border-state-hover">
+      {/* Icon Container - 8px radius per DS */}
+      <div className="w-10 h-10 rounded-lg bg-brand-primary/10 text-brand-primary flex items-center justify-center mb-4">
         <Icon className="w-5 h-5" strokeWidth={2} />
       </div>
-      <h3 className="text-lg font-semibold text-slate-900 dark:text-white leading-tight">
-        {title}
-      </h3>
-      <p className="mt-2 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
-        {description}
-      </p>
-    </Card>
+
+      <h3 className="text-h3 font-semibold text-typography-primary leading-tight">{title}</h3>
+
+      <p className="mt-2 text-body-base text-typography-secondary leading-relaxed">{description}</p>
+    </article>
   );
 };
 
