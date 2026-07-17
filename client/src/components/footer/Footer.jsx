@@ -1,4 +1,6 @@
-import { FaGithub, FaXTwitter,  } from "react-icons/fa6";
+
+import { FaGithub, FaXTwitter } from "react-icons/fa6";
+import { BookOpen } from "lucide-react";
 import Logo from "../navigation/Logo";
 
 const Footer = () => {
@@ -9,9 +11,9 @@ const Footer = () => {
       title: "Product",
       links: [
         { label: "Features", href: "#features" },
-        { label: "Security", href: "#security" },
-        { label: "Changelog", href: "#" },
         { label: "Pricing", href: "#" },
+        { label: "Security", href: "#security" },
+        { label: "Roadmap", href: "#" },
       ],
     },
     {
@@ -24,12 +26,12 @@ const Footer = () => {
       ],
     },
     {
-      title: "Community",
+      title: "Company",
       links: [
-        { label: "GitHub", href: "#" },
-        { label: "Twitter / X", href: "#" },
-        { label: "Discord", href: "#" },
+        { label: "About", href: "#about" },
         { label: "Blog", href: "#" },
+        { label: "Contact", href: "#" },
+        { label: "Careers", href: "#" },
       ],
     },
     {
@@ -55,7 +57,7 @@ const Footer = () => {
               The communication platform built for speed, clarity, and modern teams.
             </p>
 
-            {/* Social Links */}
+            {/* Social Links - Expanded for production SaaS */}
             <div className="flex items-center gap-3 mt-6">
               <a
                 href="#"
@@ -67,9 +69,16 @@ const Footer = () => {
               <a
                 href="#"
                 className="text-typography-secondary hover:text-typography-primary transition-colors duration-300"
-                aria-label="Twitter"
+                aria-label="Twitter / X"
               >
                 <FaXTwitter className="w-5 h-5" />
+              </a>
+              <a
+                href="#"
+                className="text-typography-secondary hover:text-typography-primary transition-colors duration-300"
+                aria-label="Documentation"
+              >
+                <BookOpen className="w-5 h-5" />
               </a>
             </div>
           </div>
