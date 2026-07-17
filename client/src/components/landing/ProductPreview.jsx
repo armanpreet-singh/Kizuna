@@ -1,10 +1,12 @@
-import { useState } from "react";
+import  { useState } from "react";
 import {
   LayoutDashboard,
   MessageSquare,
   Smartphone,
   Paperclip,
   Send,
+  MessageCircle,
+  Users,
 } from "lucide-react";
 
 const ProductPreview = () => {
@@ -84,7 +86,7 @@ const ProductPreview = () => {
 
             {/* View Panels with Crossfade Transition */}
             <div className="h-[500px] bg-surface-bg relative">
-              {/* Dashboard Panel */}
+              {/* Dashboard Panel - Replaced Skeletons with Real Analytics UI */}
               <div
                 id="panel-dashboard"
                 role="tabpanel"
@@ -92,54 +94,78 @@ const ProductPreview = () => {
               >
                 <div className="w-56 bg-surface-base border-r border-border-default p-4 flex flex-col gap-1">
                   <div className="h-4 w-3/4 bg-surface-high rounded mb-6" aria-hidden="true"></div>
-                  {[
-                    { n: "Overview", a: true },
-                    { n: "Analytics", a: false },
-                    { n: "Settings", a: false },
-                  ].map((item) => (
-                    <div
-                      key={item.n}
-                      className={`flex items-center gap-2 px-2 py-1.5 rounded text-body-base font-medium ${item.a ? "bg-surface-high text-typography-primary" : "text-typography-secondary"}`}
-                    >
-                      {item.n}
-                    </div>
-                  ))}
+                  <div className="flex items-center gap-2 px-2 py-1.5 rounded bg-surface-high text-typography-primary text-body-base font-medium">
+                    <LayoutDashboard className="w-4 h-4" aria-hidden="true" />
+                    Overview
+                  </div>
+                  <div className="flex items-center gap-2 px-2 py-1.5 rounded text-body-base text-typography-secondary">
+                    <MessageCircle className="w-4 h-4" aria-hidden="true" />
+                    Analytics
+                  </div>
+                  <div className="flex items-center gap-2 px-2 py-1.5 rounded text-body-base text-typography-secondary">
+                    <Users className="w-4 h-4" aria-hidden="true" />
+                    Members
+                  </div>
                 </div>
                 <div className="flex-1 p-6 flex flex-col gap-6 overflow-hidden">
                   <h3 className="text-h3 font-semibold text-typography-primary">Overview</h3>
                   <div className="grid grid-cols-3 gap-4">
                     {[
-                      { label: "Active Users", val: "1,248", color: "text-state-success" },
-                      { label: "Messages Today", val: "54.2k", color: "text-brand-primary" },
-                      { label: "Uptime", val: "99.99%", color: "text-brand-accent" },
-                    ].map((stat) => (
-                      <div
-                        key={stat.label}
-                        className="bg-surface-high border border-border-default rounded-xl p-4"
-                      >
-                        <p className="text-caption text-typography-secondary uppercase tracking-wider">
-                          {stat.label}
-                        </p>
-                        <p className={`text-h3 font-bold mt-1 ${stat.color}`}>{stat.val}</p>
-                      </div>
-                    ))}
+                      {
+                        label: "Active Users",
+                        val: "1,248",
+                        color: "text-state-success",
+                        icon: Users,
+                      },
+                      {
+                        label: "Messages Today",
+                        val: "54.2k",
+                        color: "text-brand-primary",
+                        icon: MessageCircle,
+                      },
+                      {
+                        label: "Uptime",
+                        val: "99.99%",
+                        color: "text-brand-accent",
+                        icon: LayoutDashboard,
+                      },
+                    ].map((stat) => {
+                      const Icon = stat.icon;
+                      return (
+                        <div
+                          key={stat.label}
+                          className="bg-surface-high border border-border-default rounded-xl p-4"
+                        >
+                          <div className="flex items-center justify-between mb-3">
+                            <Icon className={`w-4 h-4 ${stat.color}`} aria-hidden="true" />
+                            <span className={`text-h3 font-bold ${stat.color}`}>{stat.val}</span>
+                          </div>
+                          <p className="text-caption text-typography-secondary">{stat.label}</p>
+                        </div>
+                      );
+                    })}
                   </div>
                   <div className="flex-1 bg-surface-high/50 border border-border-default rounded-xl p-4">
                     <p className="text-body-base font-medium text-typography-secondary mb-4">
                       Recent Activity
                     </p>
                     <div className="space-y-3">
-                      {[...Array(4)].map((_, i) => (
+                      {[
+                        { user: "SC", action: "pushed to main", time: "2m ago" },
+                        { user: "MJ", action: "merged PR #142", time: "15m ago" },
+                        { user: "ER", action: "created ticket", time: "1h ago" },
+                      ].map((item, i) => (
                         <div key={i} className="flex items-center gap-3">
                           <div
-                            className="w-6 h-6 rounded-full bg-surface-base"
+                            className="w-6 h-6 rounded-full bg-brand-primary/20 border border-brand-primary/30 flex items-center justify-center text-[8px] text-brand-primary font-bold"
                             aria-hidden="true"
-                          ></div>
-                          <div
-                            className="flex-1 h-3 bg-surface-base rounded w-full"
-                            aria-hidden="true"
-                          ></div>
-                          <div className="text-caption text-state-muted">2m ago</div>
+                          >
+                            {item.user}
+                          </div>
+                          <p className="flex-1 text-body-base text-typography-primary">
+                            {item.action}
+                          </p>
+                          <div className="text-caption text-state-muted">{item.time}</div>
                         </div>
                       ))}
                     </div>
@@ -147,7 +173,7 @@ const ProductPreview = () => {
                 </div>
               </div>
 
-              {/* Group Chat Panel */}
+              {/* Group Chat Panel - Added Reactions and Threads */}
               <div
                 id="panel-chat"
                 role="tabpanel"
@@ -186,40 +212,59 @@ const ProductPreview = () => {
                     </div>
                   </div>
                   <div className="flex-1 p-6 flex flex-col gap-4 justify-end overflow-hidden">
+                    {/* Message with Reaction */}
                     <div className="flex gap-3 self-start">
                       <div
                         className="w-7 h-7 rounded-full bg-brand-primary/20 flex-shrink-0"
                         aria-hidden="true"
                       ></div>
-                      <div className="bg-surface-high border border-border-default rounded-xl rounded-tl-sm px-3 py-2 text-body-base text-typography-primary max-w-xs">
-                        Just finished the new icon set. Uploading the figma file now.
-                      </div>
-                    </div>
-                    <div className="flex gap-3 self-start">
-                      <div
-                        className="w-7 h-7 rounded-full bg-brand-primary/20 flex-shrink-0"
-                        aria-hidden="true"
-                      ></div>
-                      <div className="bg-surface-high border border-border-default rounded-xl rounded-tl-sm p-2 max-w-xs w-56">
-                        <div className="flex items-center gap-2 p-2 bg-surface-bg rounded-lg">
-                          <div
-                            className="w-8 h-8 bg-brand-accent/20 rounded flex items-center justify-center text-brand-accent text-caption font-bold"
-                            aria-hidden="true"
-                          >
-                            FIG
-                          </div>
-                          <div>
-                            <p className="text-body-base text-typography-primary">
-                              ui-v2-components.fig
-                            </p>
-                            <p className="text-caption text-typography-secondary">2.4 MB</p>
-                          </div>
+                      <div>
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <span className="text-body-base font-semibold text-typography-primary">
+                            Sarah C.
+                          </span>
+                          <span className="text-caption text-state-muted">10:38 AM</span>
+                        </div>
+                        <div className="bg-surface-high border border-border-default rounded-xl rounded-tl-sm px-3 py-2 text-body-base text-typography-primary max-w-xs">
+                          Just finished the new icon set.
+                        </div>
+                        <div className="mt-1.5 flex items-center gap-2">
+                          <span className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-surface-high border border-border-default rounded-md text-caption text-typography-secondary">
+                            👍 4
+                          </span>
                         </div>
                       </div>
                     </div>
+
+                    {/* Message with Thread Preview */}
+                    <div className="flex gap-3 self-start">
+                      <div
+                        className="w-7 h-7 rounded-full bg-brand-accent/20 flex-shrink-0"
+                        aria-hidden="true"
+                      ></div>
+                      <div>
+                        <div className="flex items-baseline gap-2 mb-1">
+                          <span className="text-body-base font-semibold text-typography-primary">
+                            Marcus J.
+                          </span>
+                          <span className="text-caption text-state-muted">10:40 AM</span>
+                        </div>
+                        <div className="bg-surface-high border border-border-default rounded-xl rounded-tl-sm px-3 py-2 text-body-base text-typography-primary max-w-xs">
+                          Let's break this task down into smaller tickets before starting.
+                        </div>
+                        <a
+                          href="#"
+                          className="mt-1.5 inline-flex items-center gap-1 px-1.5 py-0.5 text-caption text-brand-primary font-medium hover:underline"
+                        >
+                          <MessageSquare className="w-3 h-3" aria-hidden="true" />
+                          View 5 replies
+                        </a>
+                      </div>
+                    </div>
+
                     <div className="flex gap-3 self-end">
                       <div className="bg-brand-primary/10 border border-brand-primary/20 rounded-xl rounded-tr-sm px-3 py-2 text-body-base text-brand-primary max-w-xs">
-                        Looks great. I'll start implementing the tokens.
+                        Good call. I'll set up the sub-tasks.
                       </div>
                     </div>
                   </div>
@@ -235,21 +280,17 @@ const ProductPreview = () => {
                 </div>
               </div>
 
-              {/* Mobile Panel */}
+              {/* Mobile Panel - Unchanged, already structurally sound */}
               <div
                 id="panel-mobile"
                 role="tabpanel"
                 className={`absolute inset-0 flex items-center justify-center bg-surface-high transition-opacity duration-300 ease-in-out ${activeView === "mobile" ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
               >
-                {/* Phone Frame using surface-bg for deep contrast */}
                 <div className="w-[280px] h-[480px] bg-surface-bg rounded-[2.5rem] p-2 shadow-2xl relative border-[6px] border-surface-base">
-                  {/* Notch */}
                   <div
                     className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-6 bg-surface-base rounded-b-2xl z-10"
                     aria-hidden="true"
                   ></div>
-
-                  {/* Screen */}
                   <div className="w-full h-full bg-surface-base rounded-[2rem] overflow-hidden flex flex-col border border-border-default/50">
                     <div className="h-12 bg-surface-base border-b border-border-default flex items-center justify-between px-4 pt-2">
                       <span className="text-caption font-semibold text-typography-primary">
