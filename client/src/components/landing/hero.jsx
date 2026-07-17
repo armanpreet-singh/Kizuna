@@ -10,7 +10,7 @@ const Hero = () => {
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Text Content - Product Definition First */}
+        {/* Text Content - Immediate, action-oriented positioning */}
         <div className="max-w-3xl mx-auto text-center">
           {/* Eyebrow */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-brand-primary/30 bg-brand-primary/10 mb-8">
@@ -20,25 +20,25 @@ const Hero = () => {
             </span>
           </div>
 
-          {/* Headline - Display XL (64px) - Defines the product instantly */}
+          {/* Headline - Action-oriented, problem-solving */}
           <h1 className="text-display-xl font-bold text-typography-primary tracking-tight leading-[1.1]">
-            The chat platform for{" "}
+            Bring order to{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent">
-              focused teams
+              team communication
             </span>
           </h1>
 
-          {/* Subheadline - Contrasts against the status quo */}
+          {/* Subheadline - Mechanism and outcome */}
           <p className="mt-6 text-body-lg leading-relaxed text-typography-secondary max-w-2xl mx-auto">
-            Kizuna replaces noisy channels with organized, real-time conversations. Less clutter,
-            more context, faster decisions.
+            Move faster with less noise. Kizuna organizes your team's conversations, files, and
+            tools into one focused, real-time workspace.
           </p>
 
           {/* CTA Group - Clear hierarchy */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#register"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 text-body-base font-medium text-surface-base bg-brand-primary hover:opacity-90 rounded-lg transition-opacity duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-bg"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 text-body-base font-medium text-surface-base bg-brand-primary hover:opacity-90 rounded-lg transition-opacity duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-bg shadow-sm hover:shadow-md"
             >
               Try Kizuna Free
               <ArrowRight className="w-4 h-4" />
@@ -53,8 +53,14 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Realistic Kizuna Application Preview - "Live" State */}
-        <div className="relative mt-16 sm:mt-20 max-w-6xl mx-auto">
+        {/* Realistic Kizuna Application Preview 
+            Staggered reveal: Delays appearance by 150ms to guide the user's 
+            eye from the headline down to the product proof.
+        */}
+        <div
+          className="relative mt-16 sm:mt-20 max-w-6xl mx-auto opacity-0 translate-y-1.5 animate-[fadeInUp_300ms_ease-out_150ms_forwards]"
+          aria-hidden="false"
+        >
           <div className="bg-surface-base rounded-2xl shadow-2xl border border-border-default overflow-hidden">
             <div className="flex h-[350px] sm:h-[500px] text-typography-secondary">
               {/* Left Sidebar: Channels */}
@@ -77,16 +83,13 @@ const Hero = () => {
 
               {/* Center: Chat Window */}
               <div className="flex-1 flex flex-col bg-surface-bg">
-                {/* Channel Header */}
                 <div className="h-14 border-b border-border-default px-6 flex items-center justify-between flex-shrink-0 bg-surface-base">
                   <div className="flex items-center gap-2 text-body-base font-medium text-typography-primary">
                     <span className="text-typography-secondary text-lg">#</span> engineering
                   </div>
                 </div>
 
-                {/* Messages Area - Enhanced for "Live" feeling */}
                 <div className="flex-1 p-6 flex flex-col gap-5 overflow-hidden">
-                  {/* Message with Thread Preview & Reaction */}
                   <div className="flex gap-3">
                     <div
                       className="w-8 h-8 rounded-full bg-brand-primary/20 border border-brand-primary/30 flex-shrink-0 flex items-center justify-center text-[10px] text-brand-primary font-bold"
@@ -104,15 +107,11 @@ const Hero = () => {
                       <p className="text-body-base text-typography-secondary mt-1">
                         Just pushed the new auth flow to staging.
                       </p>
-
-                      {/* Live Interaction 1: Message Reaction */}
                       <div className="mt-1.5 flex items-center gap-2">
                         <span className="inline-flex items-center gap-1 px-1.5 py-0.5 bg-surface-high border border-border-default rounded-md text-caption text-typography-secondary">
                           👀 2
                         </span>
                       </div>
-
-                      {/* Live Interaction 2: Inline Thread Preview */}
                       <a
                         href="#"
                         className="mt-2 inline-flex items-center gap-1.5 px-2 py-1 bg-surface-high hover:bg-state-hover border border-border-default rounded-lg text-caption text-brand-primary font-medium transition-colors duration-300"
@@ -135,7 +134,6 @@ const Hero = () => {
                     </div>
                   </div>
 
-                  {/* Self Message with Read Receipt */}
                   <div className="flex gap-3 self-end max-w-[70%]">
                     <div className="flex-1 flex flex-col items-end">
                       <div className="bg-brand-primary/20 border border-brand-primary/30 rounded-xl rounded-tr-sm px-4 py-2.5">
@@ -143,7 +141,6 @@ const Hero = () => {
                           Looks great. I'll run the integration tests now.
                         </p>
                       </div>
-                      {/* Live Interaction 3: Read Receipts */}
                       <div className="flex items-center gap-1.5 mt-1 mr-1">
                         <CheckCheck
                           className="w-3.5 h-3.5 text-brand-accent"
@@ -160,7 +157,6 @@ const Hero = () => {
                     </div>
                   </div>
 
-                  {/* Typing Indicator */}
                   <div className="flex gap-3 items-center">
                     <div
                       className="w-8 h-8 rounded-full bg-surface-high flex-shrink-0"
@@ -177,7 +173,6 @@ const Hero = () => {
                   </div>
                 </div>
 
-                {/* Input Area */}
                 <div className="p-4 border-t border-border-default bg-surface-base">
                   <div className="flex items-center gap-3 bg-surface-high border border-border-default rounded-lg px-4 py-2.5">
                     <Paperclip className="w-4 h-4 text-state-muted" aria-hidden="true" />
@@ -190,12 +185,10 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Right Sidebar: Users */}
               <div className="hidden lg:flex flex-col w-56 border-l border-border-default bg-surface-base p-4 gap-3">
                 <span className="text-caption font-semibold text-state-muted uppercase tracking-wider mb-2">
                   Online — 3
                 </span>
-
                 <div className="flex items-center gap-2">
                   <div
                     className="relative w-6 h-6 rounded-full bg-brand-primary/20 flex items-center justify-center text-[8px] text-brand-primary font-bold"
@@ -244,6 +237,14 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Inline keyframes for the staggered hero animation to avoid global CSS changes */}
+      <style>{`
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(6px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
     </section>
   );
 };
