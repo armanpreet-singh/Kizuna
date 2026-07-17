@@ -18,28 +18,32 @@ const LandingPage = () => {
       {/* Hero remains immediate - never animate above-the-fold content */}
       <Hero />
 
-      {/* Subsequent sections use RevealOnScroll to guide the user's reading journey */}
-      <RevealOnScroll>
+      {/* 
+        Subsequent sections use RevealOnScroll with cascading delays.
+        This creates a subtle, premium waterfall rhythm as the user scrolls,
+        naturally enforcing the narrative flow of the page.
+      */}
+      <RevealOnScroll style={{ transitionDelay: "0ms" }}>
         <Statistics />
       </RevealOnScroll>
 
-      <RevealOnScroll>
+      <RevealOnScroll style={{ transitionDelay: "50ms" }}>
         <FeaturesSection />
       </RevealOnScroll>
 
-      <RevealOnScroll>
+      <RevealOnScroll style={{ transitionDelay: "100ms" }}>
         <WhyKizuna />
       </RevealOnScroll>
 
-      <RevealOnScroll>
+      <RevealOnScroll style={{ transitionDelay: "150ms" }}>
         <ProductPreview />
       </RevealOnScroll>
 
-      <RevealOnScroll>
+      <RevealOnScroll style={{ transitionDelay: "200ms" }}>
         <Testimonials />
       </RevealOnScroll>
 
-      <RevealOnScroll>
+      <RevealOnScroll style={{ transitionDelay: "250ms" }}>
         <CTASection />
       </RevealOnScroll>
 

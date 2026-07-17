@@ -86,7 +86,7 @@ const ProductPreview = () => {
 
             {/* View Panels with Crossfade Transition */}
             <div className="h-[500px] bg-surface-bg relative">
-              {/* Dashboard Panel - Replaced Skeletons with Real Analytics UI */}
+              {/* Dashboard Panel - Added Live Ping Indicator */}
               <div
                 id="panel-dashboard"
                 role="tabpanel"
@@ -116,18 +116,21 @@ const ProductPreview = () => {
                         val: "1,248",
                         color: "text-state-success",
                         icon: Users,
+                        isLive: true,
                       },
                       {
                         label: "Messages Today",
                         val: "54.2k",
                         color: "text-brand-primary",
                         icon: MessageCircle,
+                        isLive: false,
                       },
                       {
                         label: "Uptime",
                         val: "99.99%",
                         color: "text-brand-accent",
                         icon: LayoutDashboard,
+                        isLive: false,
                       },
                     ].map((stat) => {
                       const Icon = stat.icon;
@@ -140,7 +143,16 @@ const ProductPreview = () => {
                             <Icon className={`w-4 h-4 ${stat.color}`} aria-hidden="true" />
                             <span className={`text-h3 font-bold ${stat.color}`}>{stat.val}</span>
                           </div>
-                          <p className="text-caption text-typography-secondary">{stat.label}</p>
+                          <div className="flex items-center justify-between">
+                            <p className="text-caption text-typography-secondary">{stat.label}</p>
+                            {/* Live Ping Indicator - implies real-time data updates */}
+                            {stat.isLive && (
+                              <span className="relative flex h-2.5 w-2.5" aria-label="Live data">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-state-success opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-state-success"></span>
+                              </span>
+                            )}
+                          </div>
                         </div>
                       );
                     })}
@@ -173,7 +185,7 @@ const ProductPreview = () => {
                 </div>
               </div>
 
-              {/* Group Chat Panel - Added Reactions and Threads */}
+              {/* Group Chat Panel - Added Live Typing Indicator */}
               <div
                 id="panel-chat"
                 role="tabpanel"
@@ -212,7 +224,6 @@ const ProductPreview = () => {
                     </div>
                   </div>
                   <div className="flex-1 p-6 flex flex-col gap-4 justify-end overflow-hidden">
-                    {/* Message with Reaction */}
                     <div className="flex gap-3 self-start">
                       <div
                         className="w-7 h-7 rounded-full bg-brand-primary/20 flex-shrink-0"
@@ -236,7 +247,6 @@ const ProductPreview = () => {
                       </div>
                     </div>
 
-                    {/* Message with Thread Preview */}
                     <div className="flex gap-3 self-start">
                       <div
                         className="w-7 h-7 rounded-full bg-brand-accent/20 flex-shrink-0"
@@ -267,6 +277,24 @@ const ProductPreview = () => {
                         Good call. I'll set up the sub-tasks.
                       </div>
                     </div>
+
+                    {/* Live Typing Indicator - Makes the chat feel active */}
+                    <div className="flex gap-3 items-center">
+                      <div
+                        className="w-7 h-7 rounded-full bg-state-success/10 border border-state-success/30 flex-shrink-0 flex items-center justify-center text-[8px] text-state-success font-bold"
+                        aria-hidden="true"
+                      >
+                        ER
+                      </div>
+                      <div
+                        className="bg-surface-high border border-border-default rounded-xl px-3 py-2 flex items-center gap-1"
+                        aria-label="Elena is typing"
+                      >
+                        <div className="w-1.5 h-1.5 bg-state-muted rounded-full animate-bounce"></div>
+                        <div className="w-1.5 h-1.5 bg-state-muted rounded-full animate-bounce"></div>
+                        <div className="w-1.5 h-1.5 bg-state-muted rounded-full animate-bounce"></div>
+                      </div>
+                    </div>
                   </div>
                   <div className="p-4 border-t border-border-default bg-surface-base">
                     <div className="flex items-center gap-3 bg-surface-high border border-border-default rounded-lg px-4 py-2.5">
@@ -280,7 +308,7 @@ const ProductPreview = () => {
                 </div>
               </div>
 
-              {/* Mobile Panel - Unchanged, already structurally sound */}
+              {/* Mobile Panel - Added Subtle Typing Indicator */}
               <div
                 id="panel-mobile"
                 role="tabpanel"
@@ -319,6 +347,12 @@ const ProductPreview = () => {
                           <span className="ml-auto bg-state-danger text-surface-base text-[8px] px-1 rounded-full">
                             3
                           </span>
+                        </div>
+                        {/* Mobile Typing Indicator */}
+                        <div className="flex items-center gap-1.5 px-2 py-1">
+                          <div className="w-1 h-1 bg-state-muted rounded-full animate-bounce"></div>
+                          <div className="w-1 h-1 bg-state-muted rounded-full animate-bounce"></div>
+                          <div className="w-1 h-1 bg-state-muted rounded-full animate-bounce"></div>
                         </div>
                       </div>
                       <div className="p-2 border-t border-border-default bg-surface-base">
