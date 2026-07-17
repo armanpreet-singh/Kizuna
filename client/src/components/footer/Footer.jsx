@@ -1,4 +1,6 @@
-import { FaGithub, FaXTwitter, FaMessage } from "react-icons/fa6";
+import { FaGithub, FaXTwitter,  } from "react-icons/fa6";
+import Logo from "../navigation/Logo";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
@@ -24,7 +26,7 @@ const Footer = () => {
     {
       title: "Community",
       links: [
-        { label: "FaGithub", href: "#" },
+        { label: "GitHub", href: "#" },
         { label: "Twitter / X", href: "#" },
         { label: "Discord", href: "#" },
         { label: "Blog", href: "#" },
@@ -42,37 +44,29 @@ const Footer = () => {
   ];
 
   return (
-    <footer
-      className="bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800"
-      aria-label="Global footer"
-    >
+    <footer className="bg-surface-base border-t border-border-default" aria-label="Global footer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Grid: 5 columns (Logo + 4 Groups) */}
-        <div className="py-12 lg:py-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-8">
-          {/* Brand Column - Spans 1 column */}
+        {/* Main Footer Grid: Logo + 4 Link Groups */}
+        <div className="py-12 lg:py-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
+          {/* Brand Column */}
           <div className="col-span-2 md:col-span-3 lg:col-span-1 lg:pr-8">
-            <a href="/" className="flex items-center gap-2 text-slate-900 dark:text-white mb-4">
-              <FaMessage
-                className="w-6 h-6 text-indigo-600 dark:text-indigo-400"
-                strokeWidth={2.5}
-              />
-              <span className="text-lg font-semibold tracking-tight">Kizuna</span>
-            </a>
-            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mb-6">
+            <Logo />
+            <p className="mt-4 text-body-base text-typography-secondary leading-relaxed">
               The communication platform built for speed, clarity, and modern teams.
             </p>
 
-            <div className="flex items-center gap-3">
+            {/* Social Links */}
+            <div className="flex items-center gap-3 mt-6">
               <a
                 href="#"
-                className="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+                className="text-typography-secondary hover:text-typography-primary transition-colors duration-300"
                 aria-label="FaGithub"
               >
                 <FaGithub className="w-5 h-5" />
               </a>
               <a
                 href="#"
-                className="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
+                className="text-typography-secondary hover:text-typography-primary transition-colors duration-300"
                 aria-label="Twitter"
               >
                 <FaXTwitter className="w-5 h-5" />
@@ -83,44 +77,44 @@ const Footer = () => {
           {/* Link Columns */}
           {linkGroups.map((group) => (
             <div key={group.title}>
-              <h3 className="text-sm font-semibold text-slate-900 dark:text-white mb-4">
+              <h3 className="text-body-base font-semibold text-typography-primary mb-4">
                 {group.title}
               </h3>
-              <ul className="space-y-3">
-                {group.links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors duration-200"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <nav aria-label={`${group.title} links`}>
+                <ul className="space-y-3">
+                  {group.links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        className="text-body-base text-typography-secondary hover:text-typography-primary transition-colors duration-300"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
             </div>
           ))}
         </div>
 
         {/* Bottom Bar */}
-        <div className="py-6 border-t border-slate-100 dark:border-slate-800/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-slate-400 dark:text-slate-500">
+        <div className="py-6 border-t border-border-default flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-caption text-typography-secondary">
             © {currentYear} Kizuna. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-xs text-slate-400 dark:text-slate-500">
+          <div className="flex items-center gap-2 text-caption text-typography-secondary">
             <span>Built with focus.</span>
-            <span className="text-slate-200 dark:text-slate-700">•</span>
-            <a
-              href="#"
-              className="hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
-            >
+            <span className="text-border-default" aria-hidden="true">
+              •
+            </span>
+            <a href="#" className="hover:text-typography-primary transition-colors duration-300">
               Privacy
             </a>
-            <span className="text-slate-200 dark:text-slate-700">•</span>
-            <a
-              href="#"
-              className="hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
-            >
+            <span className="text-border-default" aria-hidden="true">
+              •
+            </span>
+            <a href="#" className="hover:text-typography-primary transition-colors duration-300">
               Terms
             </a>
           </div>

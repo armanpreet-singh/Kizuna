@@ -1,1 +1,128 @@
 @import "tailwindcss";
+
+/* ==========================================
+   1. DESIGN TOKENS (CSS Custom Properties)
+   ==========================================
+   Grouped semantically to represent the Kizuna 
+   Design System. These automatically update 
+   when the .dark class is toggled on <html>.
+   ========================================== */
+
+:root {
+  /* Brand */
+  --brand-primary: #4F46E5;
+  --brand-accent: #06B6D4;
+  
+  /* Surface */
+  --surface-bg: #F8FAFC;
+  --surface-base: #FFFFFF;
+  --surface-high: #F1F5F9;
+  
+  /* Typography */
+  --typography-primary: #0F172A;
+  --typography-secondary: #64748B;
+  
+  /* Border */
+  --border-default: #E2E8F0;
+  
+  /* State */
+  --state-success: #10B981;
+  --state-warning: #F59E0B;
+  --state-danger: #EF4444;
+  --state-hover: #E2E8F0;
+  --state-muted: #64748B;
+  --state-disabled-text: #94A3B8;
+  --state-disabled-bg: #E2E8F0;
+}
+
+.dark {
+  /* Brand - Stepped up to indigo-400 for perceived brightness */
+  --brand-primary: #818CF8;
+  
+  /* Surface - Deep blue-black to reduce eye strain */
+  --surface-bg: #0B0F19;
+  --surface-base: #131825;
+  --surface-high: #1E293B;
+  
+  /* Typography */
+  --typography-primary: #F1F5F9;
+  /* Secondary remains #64748B as defined in DS */
+  
+  /* Border - Relies on lightness steps, not opacity */
+  --border-default: #1E293B;
+  
+  /* State */
+  --state-hover: #1E293B;
+  --state-disabled-text: #CBD5E1;
+  --state-disabled-bg: #F8FAFC;
+}
+
+/* ==========================================
+   2. TAILWIND V4 THEME MAPPING
+   ==========================================
+   Maps the semantic tokens above into Tailwind 
+   utility classes. Example usage: 
+   bg-surface-bg, text-typography-primary, 
+   border-border-default, py-spacing-section-m
+   ========================================== */
+
+@theme {
+  /* Fonts */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+  /* Brand Colors */
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-accent: var(--brand-accent);
+
+  /* Surface Colors */
+  --color-surface-bg: var(--surface-bg);
+  --color-surface-base: var(--surface-base);
+  --color-surface-high: var(--surface-high);
+
+  /* Typography Colors */
+  --color-typography-primary: var(--typography-primary);
+  --color-typography-secondary: var(--typography-secondary);
+
+  /* Border Colors */
+  --color-border-default: var(--border-default);
+
+  /* State Colors */
+  --color-state-success: var(--state-success);
+  --color-state-warning: var(--state-warning);
+  --color-state-danger: var(--state-danger);
+  --color-state-hover: var(--state-hover);
+  --color-state-muted: var(--state-muted);
+  --color-state-disabled-text: var(--state-disabled-text);
+  --color-state-disabled-bg: var(--state-disabled-bg);
+
+  /* ------------------------------------------
+     Application Typography (Strict DS Scale)
+     ------------------------------------------ */
+  --text-h1: 1.875rem;        /* 30px */
+  --text-h2: 1.5rem;          /* 24px */
+  --text-h3: 1.25rem;         /* 20px */
+  --text-body-lg: 1rem;       /* 16px */
+  --text-body-base: 0.875rem; /* 14px */
+  --text-caption: 0.75rem;    /* 12px */
+
+  /* ------------------------------------------
+     Marketing Display Typography Extensions
+     ------------------------------------------ */
+  --text-display-xl: 4rem;    /* 64px */
+  --text-display-l: 3rem;     /* 48px */
+  --text-display-m: 2.5rem;   /* 40px */
+
+  /* ------------------------------------------
+     Marketing Section Spacing Extensions
+     ------------------------------------------ */
+  --spacing-section-xs: 5rem; /* 80px */
+  --spacing-section-s: 6rem;  /* 96px */
+  --spacing-section-m: 8rem;  /* 128px */
+  --spacing-section-l: 10rem; /* 160px */
+
+  /* ------------------------------------------
+     Motion / Transitions
+     ------------------------------------------ */
+  --transition-motion-fast: 150ms ease-in-out;
+  --transition-motion-normal: 300ms ease-in-out;
+}
