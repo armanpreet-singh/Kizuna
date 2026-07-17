@@ -1,11 +1,11 @@
-
-import { Zap, Eye, ShieldCheck,  } from "lucide-react";
+import { Zap, Eye, ShieldCheck } from "lucide-react";
 
 const WhyKizuna = () => {
   const pillars = [
     {
       id: "speed",
       icon: Zap,
+      number: "01",
       title: "Engineered for speed.",
       description:
         "Latency is the enemy of flow. We built Kizuna on a non-blocking architecture, ensuring messages appear the moment they are sent. No loading spinners, no delayed typing indicators. Just pure, instantaneous communication.",
@@ -35,7 +35,6 @@ const WhyKizuna = () => {
               </div>
             ))}
           </div>
-          {/* Abstract Latency Graph */}
           <div className="mt-6 h-12 flex items-end gap-1 px-2" aria-hidden="true">
             {[40, 20, 30, 10, 25, 15, 5, 10, 5, 8, 12, 5].map((h, i) => (
               <div
@@ -51,6 +50,7 @@ const WhyKizuna = () => {
     {
       id: "focus",
       icon: Eye,
+      number: "02",
       title: "Designed for focus.",
       description:
         "Most chat apps demand your attention. Kizuna respects it. We stripped away the clutter—excessive toolbars, flashy animations, and visual noise—leaving only what matters: your team's words.",
@@ -79,7 +79,6 @@ const WhyKizuna = () => {
               </div>
             </div>
           </div>
-          {/* Subtle "Focus Mode" indicator */}
           <div className="px-4 py-2 bg-surface-high border-t border-border-default flex items-center gap-2">
             <Eye className="w-3 h-3 text-brand-primary" aria-hidden="true" />
             <span className="text-caption text-state-muted font-medium">
@@ -92,6 +91,7 @@ const WhyKizuna = () => {
     {
       id: "trust",
       icon: ShieldCheck,
+      number: "03",
       title: "Built on trust.",
       description:
         "Your conversations are proprietary. We implemented E2E encryption by default, open-source our client-side encryption protocols, and ensure your data is never monetized or sold.",
@@ -141,40 +141,51 @@ const WhyKizuna = () => {
           </p>
         </div>
 
-        {/* Storytelling Rows */}
-        <div className="space-y-24 lg:space-y-32">
-          {pillars.map((pillar, index) => {
-            const Icon = pillar.icon;
-            // Alternate layout: Even indexes are Text -> Visual, Odd are Visual -> Text
-            const isReversed = index % 2 !== 0;
-
-            return (
-              <div
-                key={pillar.id}
-                className={`flex flex-col ${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"} items-center gap-12 lg:gap-20`}
-              >
-                {/* Text Content */}
-                <div className="flex-1 max-w-lg">
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand-primary/10 text-brand-primary mb-6">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-h3 font-semibold text-typography-primary tracking-tight leading-tight">
+        {/* Split-Index Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* Left Column: Table of Contents Index (Desktop Only) */}
+          <div className="hidden lg:flex lg:col-span-4 flex-col justify-center">
+            <nav
+              className="relative border-l border-border-default pl-8 space-y-12"
+              aria-label="Philosophy index"
+            >
+              {pillars.map((pillar) => (
+                <a
+                  key={pillar.id}
+                  href={`#${pillar.id}`}
+                  className="block group transition-colors duration-300"
+                >
+                  <span className="text-caption text-brand-primary font-mono mb-2 block">
+                    {pillar.number}
+                  </span>
+                  <h3 className="text-display-m font-bold text-typography-primary group-hover:text-brand-primary transition-colors duration-300">
                     {pillar.title}
                   </h3>
-                  <p className="mt-4 text-body-lg text-typography-secondary leading-relaxed">
-                    {pillar.description}
-                  </p>
+                </a>
+              ))}
+            </nav>
+          </div>
+
+          {/* Right Column: Content & Visual Flow */}
+          <div className="lg:col-span-8 flex flex-col gap-24">
+            {pillars.map((pillar) => (
+              <div key={pillar.id} id={pillar.id} className="scroll-mt-24">
+                {/* Mobile-only Header (Replaces the left index) */}
+                <div className="flex items-center gap-3 mb-6 lg:hidden">
+                  <span className="text-caption text-brand-primary font-mono">{pillar.number}</span>
+                  <h3 className="text-h2 font-semibold text-typography-primary">{pillar.title}</h3>
                 </div>
 
+                {/* Description */}
+                <p className="text-body-lg text-typography-secondary leading-relaxed max-w-2xl mb-10">
+                  {pillar.description}
+                </p>
+
                 {/* Visual Proof */}
-                <div
-                  className={`flex-1 w-full ${isReversed ? "lg:flex lg:justify-start" : "lg:flex lg:justify-end"}`}
-                >
-                  {pillar.visual}
-                </div>
+                <div className="flex justify-end">{pillar.visual}</div>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>
