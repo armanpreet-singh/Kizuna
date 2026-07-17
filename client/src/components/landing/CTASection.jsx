@@ -1,63 +1,43 @@
-
-import { ArrowRight } from 'lucide-react';
-import Button from '../ui/Button';
+import { ArrowRight } from "lucide-react";
 
 const CTASection = () => {
   return (
-
-    <section className="relative py-24 sm:py-32 bg-slate-900 dark:bg-slate-800 border-y border-slate-900 dark:border-slate-700 overflow-hidden">
-      {/* Decorative Dot Grid - Translucency is acceptable here for background blending */}
-      <div 
-        className="absolute inset-0 opacity-[0.15]" 
-        style={{
-          backgroundImage: 'radial-gradient(circle, #ffffff 1px, transparent 1px)',
-          backgroundSize: '24px 24px'
-        }}
-        aria-hidden="true"
-      />
-      
-      {/* Decorative Glow - Translucency acceptable for blur effects */}
-      <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-indigo-600/20 dark:bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" 
+    <section className="relative py-spacing-section-m bg-surface-high overflow-hidden">
+      {/* Subtle radial gradient to draw focus to the center */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-brand-primary/10 rounded-full blur-3xl pointer-events-none"
         aria-hidden="true"
       />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Headline */}
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-          Stop fighting your tools.<br className="hidden sm:block" /> Start building together.
+        <h2 className="text-display-l font-semibold text-typography-primary tracking-tight leading-tight">
+          Stop fighting your tools.
+          <br className="hidden sm:block" /> Start building together.
         </h2>
 
         {/* Supporting Description */}
-        <p className="mt-6 text-lg text-slate-400 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto">
-          Migrate your team in minutes. Kizuna's import tool seamlessly pulls your channels, history, and files from Slack, Discord, and Telegram—so you don't lose a single thread.
+        <p className="mt-6 text-body-lg text-typography-secondary leading-relaxed max-w-2xl mx-auto">
+          Migrate your team in minutes. Kizuna's import tool seamlessly pulls your channels,
+          history, and files from Slack, Discord, and Telegram—so you don't lose a single thread.
         </p>
 
         {/* CTA Group */}
         <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button 
-            variant="primary" 
-            size="lg" 
+          <a
             href="#register"
-            className="bg-white text-slate-900 hover:bg-slate-100 active:bg-slate-200 shadow-lg shadow-black/20 px-8"
+            className="inline-flex items-center justify-center gap-2 px-8 py-3 text-body-base font-medium text-surface-base bg-brand-primary hover:opacity-90 rounded-lg transition-opacity duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-high"
           >
             Get Started for Free
             <ArrowRight className="w-4 h-4" />
-          </Button>
-          
-          {/* 
-            Secondary Ghost Button: 
-            Fixed from dark:hover:bg-slate-700/50 to strictly opaque dark:hover:bg-slate-700 
-            to ensure responsive, premium interactive feedback.
-          */}
-          <Button 
-            variant="ghost" 
-            size="lg" 
+          </a>
+
+          <a
             href="#contact"
-            className="text-slate-400 dark:text-slate-300 border border-slate-700 dark:border-slate-600 hover:bg-slate-800 dark:hover:bg-slate-700 hover:text-white hover:border-slate-600 dark:hover:text-white"
+            className="inline-flex items-center justify-center px-8 py-3 text-body-base font-medium text-typography-secondary border border-border-default hover:bg-surface-bg hover:text-typography-primary rounded-lg transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-high"
           >
             Talk to Sales
-          </Button>
+          </a>
         </div>
       </div>
     </section>
