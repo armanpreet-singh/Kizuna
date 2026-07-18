@@ -27,11 +27,8 @@ Rather than focusing solely on building an attractive interface, the primary goa
 ---
 
 # 🖼️ Preview
-
-> Replace the image below with your latest homepage screenshot.
-
 <p align="center">
-  <img src="./public/screenshots/homepage.png" alt="Kizuna Homepage" width="900">
+  <img src="client/public/screenshots/hompage.png" alt="Kizuna Homepage" width="900">
 </p>
 
 ---
@@ -144,31 +141,17 @@ The goal is to build every feature while understanding the underlying technologi
 
 # 🛠 Tech Stack
 
-### Frontend
-
-- React
-- Vite
-
-### Styling
-
-- Tailwind CSS
-
-### Routing
-
-- React Router
-
-### Forms
-
-- React Hook Form
-
-### Validation
-
-- Zod
-
-### Icons
-
-- Lucide React
-
+| Technology | Purpose |
+|------------|---------|
+| **React** | Builds the user interface using reusable, component-based architecture. |
+| **Vite** | Provides a fast development server and optimized production builds. |
+| **Tailwind CSS** | Utility-first CSS framework used for styling and responsive layouts. |
+| **React Router** | Handles client-side routing and navigation between pages. |
+| **React Hook Form** | Simplifies form state management and form handling. |
+| **Zod** | Performs schema-based form validation with type-safe validation rules. |
+| **Lucide React** | Provides modern, customizable SVG icons used throughout the application. |
+| **JavaScript (ES6+)** | Primary programming language used to build the application logic. |
+| **Git & GitHub** | Version control and source code management. |
 ---
 
 # 📂 Project Structure
