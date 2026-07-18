@@ -1,89 +1,57 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 import MobileMenu from "./MobileMenu";
 import ThemeToggle from "../ui/ThemeToggle";
+import Button from "../ui/Button";
+import { Menu } from "lucide-react";
 
 const Navbar = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  const navLinks = [
-    { label: "Features", href: "#features" },
-    { label: "About", href: "#about" },
-    { label: "GitHub", href: "#", external: true },
-  ];
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen((prev) => !prev);
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
-
   return (
-    <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ease-out ${
-        isScrolled
-          ? "bg-surface-base/80 backdrop-blur-xl shadow-sm border-b border-border-default"
-          : "bg-transparent border-b border-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Left: Logo */}
-        <Logo />
-
-        {/* Center: Desktop Nav Links */}
-        <NavLinks links={navLinks} />
-
-        {/* Right: Actions */}
-        <div className="hidden md:flex items-center gap-2">
-          <ThemeToggle />
-
-          <div className="w-px h-5 bg-border-default mx-2" aria-hidden="true" />
-
-          <a
-            href="#login"
-            className="px-4 py-2 text-sm font-medium text-typography-secondary hover:text-typography-primary transition-colors duration-300"
-          >
-            Login
-          </a>
-
-          <a
-            href="#register"
-            className="px-4 py-2 text-sm font-medium text-surface-base bg-brand-primary hover:opacity-90 rounded-lg transition-opacity duration-300"
-          >
-            Get Started
-          </a>
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl border-b border-gray-200/80 dark:border-white/[0.06] shadow-sm"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <Logo />
+            <NavLinks />
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <a
+                href="#"
+                className="hidden md:inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                Sign in
+              </a>
+              <Button variant="primary" size="sm" className="hidden md:inline-flex">
+                Get started
+              </Button>
+              <button
+                className="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors"
+                onClick={() => setMobileOpen(true)}
+              >
+                <Menu size={20} />
+              </button>
+            </div>
+          </div>
         </div>
-
-        {/* Mobile: Toggle & Theme */}
-        <div className="flex items-center gap-2 md:hidden">
-          <ThemeToggle />
-          <button
-            type="button"
-            className="p-2 rounded-lg text-typography-secondary hover:bg-surface-high hover:text-typography-primary transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface-bg"
-            onClick={toggleMobileMenu}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu Panel */}
-      <MobileMenu isOpen={isMobileMenuOpen} onClose={closeMobileMenu} links={navLinks} />
-    </header>
+      </header>
+      <MobileMenu isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
+    </>
   );
 };
 
