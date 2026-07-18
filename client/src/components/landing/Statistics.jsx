@@ -1,60 +1,35 @@
+import RevealOnScroll from "../ui/RevealOnScroll";
+
+const stats = [
+  { value: "10K+", label: "Teams worldwide", suffix: "" },
+  { value: "2M", label: "Messages sent daily", suffix: "+" },
+  { value: "99.9", label: "Uptime guaranteed", suffix: "%" },
+  { value: "180", label: "Countries reached", suffix: "+" },
+];
+
 const Statistics = () => {
-  // Replaced "E2EE" with a numerical metric to fix visual grid inconsistency
-  const stats = [
-    {
-      value: "99.99%",
-      label: "Uptime SLA",
-      subtext: "Enterprise reliability",
-      isHighlight: true,
-    },
-    {
-      value: "12ms",
-      label: "Avg. Latency",
-      subtext: "Global edge network",
-      isHighlight: false,
-    },
-    {
-      value: "2.4M",
-      label: "Messages Daily",
-      subtext: "Processed reliably",
-      isHighlight: false,
-    },
-    {
-      value: "<50ms",
-      label: "API Response",
-      subtext: "Average query time",
-      isHighlight: false,
-    },
-  ];
-
   return (
-    <section
-      className="py-spacing-section-xs bg-surface-base border-y border-border-default"
-      aria-label="Platform statistics"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          {stats.map((stat) => (
-            <div key={stat.label} className="text-center flex flex-col items-center">
-              {/* Metric Value - Simplified logic by removing the text/acronym conditional */}
-              <p
-                className={`text-display-m font-bold tracking-tight leading-none ${
-                  stat.isHighlight
-                    ? "text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent"
-                    : "text-typography-primary"
-                }`}
-              >
-                {stat.value}
-              </p>
+    <section className="relative py-20 bg-gray-950 dark:bg-gray-950 overflow-hidden">
+      {/* Top border gradient */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/30 to-transparent" />
 
-              {/* Metric Label */}
-              <p className="mt-2 text-body-base font-medium text-typography-primary">
-                {stat.label}
-              </p>
+      {/* Background subtle pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(139,92,246,0.08)_0%,_transparent_70%)]" />
 
-              {/* Contextual Subtext */}
-              <p className="mt-0.5 text-caption text-typography-secondary">{stat.subtext}</p>
-            </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/5">
+          {stats.map((stat, i) => (
+            <RevealOnScroll key={stat.label} delay={i * 100} direction="up">
+              <div className="bg-gray-950 p-8 md:p-10 text-center hover:bg-white/[0.02] transition-colors">
+                <div className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-2">
+                  {stat.value}
+                  <span className="text-violet-400">{stat.suffix}</span>
+                </div>
+                <div className="text-sm text-gray-500">{stat.label}</div>
+              </div>
+            </RevealOnScroll>
           ))}
         </div>
       </div>
